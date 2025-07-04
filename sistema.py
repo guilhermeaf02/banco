@@ -1,7 +1,10 @@
 from cliente import menu_cliente
 from categoria import menu_categoria
 from produto import menu_produto
+from usuario import menu_usuario, login
+from venda import menu_venda
 
+from conexao import conecta_db
 
 def menu_principal():
     print ("----------------------------------")
@@ -26,9 +29,9 @@ def menu_principal():
         elif opcao == "3":
             menu_produto ()
         elif opcao == "4":
-            print ("Cadastro de Usuario")
+            menu_usuario ()
         elif opcao == "5":
-            print ("Cadastro de Venda")
+            menu_venda()
         elif opcao == "6":
             print ("Sair do Sistema")
             break
@@ -37,6 +40,12 @@ def menu_principal():
 
         
 if __name__  == "__main__":
-    menu_principal()
+    conexao = conecta_db
+
+    while True:
+        resultando = login()
+        if resultando is True:
+            menu_principal()
+    
 
     
